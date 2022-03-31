@@ -3,4 +3,5 @@ import App from './App.vue'
 import './assets/tailwind.css'
 import router from './router'
 import store from '@/store'
-createApp(App).use(router,store).mount('#app')
+import VueCarousel from 'vue-carousel';
+createApp(App).use(router,store,VueCarousel).mount('#app')

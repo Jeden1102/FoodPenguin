@@ -5,8 +5,8 @@
         </router-link>
         <div class="flex space-x-12 hidden sm:flex">
         <router-link class="text-white font-light link" to="/">Home</router-link> 
-        <router-link class="text-white font-light link" to="/">About</router-link> 
-        <router-link class="text-white font-light link" to="/">Contact</router-link> 
+        <router-link class="text-white font-light link" :to="{name:'Menu'}">Menu</router-link> 
+        <router-link class="text-white font-light link" :to="{name:'Contact'}">Contact</router-link> 
         </div>
         <div @click="showCartMethod" class="h-8 w-8 flex items-center justify-center rounded-full cursor-pointer hover:bg-orange-strong bg-orange hidden sm:flex">
             <img class="h-4 w-4" src="@/assets/cart-shopping-solid.svg" alt="">

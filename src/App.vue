@@ -3,16 +3,19 @@
   <MobileNav class="mobile-nav sm:hidden"/>
   <Cart/>
   <router-view/>
+  <Footer/>
 </template>
 <script>
 import Nav from '@/components/Nav.vue';
 import Cart from '@/components/Cart.vue';
 import MobileNav from '@/components/MobileNav.vue';
+import Footer from '@/components/Footer.vue';
 export default {
   components:{
     Nav,
     Cart,
-    MobileNav
+    MobileNav,
+    Footer
   }
 }
 </script>

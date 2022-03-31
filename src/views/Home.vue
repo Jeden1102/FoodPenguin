@@ -39,7 +39,6 @@
       <div class="flex flex-col h-full p-12">
         <div class="w-full  h-full ">
           <div class="flex items-center justify-center flex-wrap">
-
             <div class="box m-2 p-4 h-56 w-44 flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
               <h2 class="w-full font-bold text-2xl">Drinks</h2>
               <img src="@/assets/categories_icons/napoje.png" alt="">
@@ -61,9 +60,12 @@
         </div>
       </div>
     </div>
+    <div>
+
+    </div>
     <div class="about">
       <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="relative bg-gray-900 overflow-hidden">
+<div class="relative bg-gray-900 overflow-hidden  border-t-2 border-b-2 border-dashed border-gray-400">
   <div class="max-w-7xl mx-auto">
     <div class="relative z-10 pb-8 bg-gray-900 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
       <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="#0f172a" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -82,31 +84,11 @@
             <span class="block xl:inline">What clients say about Food</span>
             <span class="block text-orange xl:inline">Penguin</span>
           </h1>
-          <p class="mt-3 text-base text-gray-200 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
-          <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start flex-col bg-gray-800 p-4 rounded-md">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur distinctio doloribus neque laudantium omnis soluta impedit dolores officia minus.
-            </p>
-            <h2 class="font-light mt-4">Mark Twain, 2021-21-3</h2>
-            <div class="flex mt-2">
-            <div  class="h-6 w-6">
-            <img src="@/assets/star-yellow.svg" alt="">
-            </div>
-            <div  class="h-6 w-6">
-            <img src="@/assets/star-yellow.svg" alt="">
-            </div>
-            <div  class="h-6 w-6">
-            <img src="@/assets/star-yellow.svg" alt="">
-            </div>
-            <div  class="h-6 w-6">
-            <img src="@/assets/star-yellow.svg" alt="">
-            </div>
-            <div  class="h-6 w-6">
-            <img src="@/assets/star-solid.svg" alt="">
-            </div>
-            </div>
 
-          </div>
+          <p class="mt-3 text-base text-gray-200 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+          <vueper-slides  autoplay arrows-outside bullets-outside>
+            <vueper-slide class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start flex-col bg-gray-800 p-12 rounded-md" v-for="(slide, i) in slides" :key="i" :title="slide.title" :content="slide.content" />
+          </vueper-slides>
         </div>
       </main>
     </div>
@@ -116,16 +98,19 @@
   </div>
 </div>
     </div>
+
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import axios from 'axios';
-
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 export default {
 
   components: {
+    VueperSlides, VueperSlide,
   },
   mounted() {
     this.getData()
@@ -138,7 +123,53 @@ export default {
     }
   },
   data() {
+    return{
+    slides: [
+      {
+        title: '<h2 class="font-light mt-4">Mark Twain, 2021-21-3</h2>',
+        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur distinctio doloribus neque laudantium omnis soluta impedit dolores officia minus.
+        <div class="w-full  flex justify-center my-2">
+          <div class="flex space-x-1">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="">
+          </div>
+        </div>
+        `,
+      },
+      {
+        title: '<h2 class="font-light mt-4">John Doe, 2021-22-4</h2>',
+        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur distinctio doloribus neque laudantium omnis soluta impedit dolores officia minus.
+        <div class="w-full  flex justify-center my-2">
+          <div class="flex space-x-1">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="">
+          </div>
+        </div>
+        `,
+      },
+      {
+        title: '<h2 class="font-light mt-4">Madzia Radziej, 2022-21-3</h2>',
+        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur distinctio doloribus neque laudantium omnis soluta impedit dolores officia minus.
+        <div class="w-full  flex justify-center my-2">
+          <div class="flex space-x-1">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+          </div>
+        </div>
+        `,
+      },
 
+  ]
+    }
   },
 }
 </script>
