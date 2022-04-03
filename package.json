@@ -8,15 +8,29 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@mdi/font": "5.9.55",
+    "@quasar/extras": "^1.0.0",
     "@tailwindcss/forms": "^0.5.0",
     "axios": "^0.26.1",
+    "bootstrap": "^5.1.3",
+    "bootstrap-vue": "^2.21.2",
+    "buefy": "^0.9.19",
     "core-js": "^3.6.5",
+    "gsap": "^3.10.2",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
+    "quasar": "^2.0.0",
+    "roboto-fontface": "*",
     "swiper": "^8.0.7",
-    "vue": "^3.0.0",
+    "vue": "^3.2.31",
     "vue-carousel": "^0.18.0",
+    "vue-notification": "^1.3.20",
     "vue-router": "^4.0.0-0",
+    "vue-sweetalert2": "^5.0.2",
     "vueperslides": "^3.3.2",
-    "vuex": "^4.0.2"
+    "vuetify": "^3.0.0-beta.0",
+    "vuex": "^4.0.2",
+    "webfontloader": "^1.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.11",
@@ -29,8 +43,12 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "postcss": "^7.0.39",
+    "sass": "^1.38.0",
+    "sass-loader": "^10.1.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-    "vue-cli-plugin-tailwind": "~3.0.0"
+    "vue-cli-plugin-quasar": "~5.0.1",
+    "vue-cli-plugin-tailwind": "~3.0.0",
+    "vuetify-loader": "^2.0.0-alpha.0"
   },
   "eslintConfig": {
     "root": true,

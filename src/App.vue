@@ -3,6 +3,7 @@
   <MobileNav class="mobile-nav sm:hidden"/>
   <Cart/>
   <router-view/>
+  <Alert>SIEMAN</Alert>
   <Footer/>
 </template>
 <script>
@@ -10,12 +11,14 @@ import Nav from '@/components/Nav.vue';
 import Cart from '@/components/Cart.vue';
 import MobileNav from '@/components/MobileNav.vue';
 import Footer from '@/components/Footer.vue';
+import Alert from '@/components/Alert.vue';
 export default {
   components:{
     Nav,
     Cart,
     MobileNav,
-    Footer
+    Footer,
+    Alert
   }
 }
 </script>
@@ -28,9 +31,7 @@ export default {
   color: rgb(212, 212, 212);
 }
 .nav{
-  position:absolute;
-  left:0;
-  top:0;
+  position:relative;
   width:100%;
 }
 .mobile-nav{
@@ -40,4 +41,5 @@ export default {
   width:100%;
   height:100vh;
 }
+
 </style>

@@ -44,83 +44,38 @@ v-bind:class="[showCart ? 'translate-x-0' : 'translate-x-full']"
 
                     <div class="mt-8">
                     <div class="flow-root">
-                        <ul role="list" class="-my-6 divide-y divide-gray-200">
-                        <li class="flex py-6">
+                        <ul role="list" class="-my-6 divide-y divide-gray-200" v-if="cartItems.length>0">
+                        <li v-for="(product,index) in cartItems" :key="product.id" class="flex py-6">
                             <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                            <img src="@/assets/pizza2.png" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." class="h-full w-full object-cover object-center">
+                            <img :src="`${imgLink}/${product.image_url}`"  alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." class="h-full w-full object-cover object-center">
                             </div>
 
                             <div class="ml-4 flex flex-1 flex-col">
                             <div>
                                 <div class="flex justify-between text-base font-medium text-gray-900">
                                 <h3>
-                                    <a href="#"> Funghi </a>
+                                    <a href="#"> {{ product.name }} </a>
                                 </h3>
-                                <p class="ml-4">$15.00</p>
+                                <p class="ml-4">${{product.price}}</p>
                                 </div>
-                                <p class="mt-1 text-sm text-gray-500">Small</p>
+                                <p class="mt-1 text-sm text-gray-500">{{ product.size }}</p>
                             </div>
                             <div class="flex flex-1 items-end justify-between text-sm">
                                 <p class="text-gray-500">Qty 1</p>
 
                                 <div class="flex">
-                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                                <button @click="removeItem(index)" type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
                                 </div>
                             </div>
                             </div>
                         </li>
 
-                        <li class="flex py-6">
-                            <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                            <img src="@/assets/burger.png" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." class="h-full w-full object-cover object-center">
-                            </div>
-
-                            <div class="ml-4 flex flex-1 flex-col">
-                            <div>
-                                <div class="flex justify-between text-base font-medium text-gray-900">
-                                <h3>
-                                    <a href="#"> Meat Burger </a>
-                                </h3>
-                                <p class="ml-4">$12.00</p>
-                                </div>
-                                <p class="mt-1 text-sm text-gray-500">Big</p>
-                            </div>
-                            <div class="flex flex-1 items-end justify-between text-sm">
-                                <p class="text-gray-500">Qty 1</p>
-
-                                <div class="flex">
-                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
-                                </div>
-                            </div>
-                            </div>
-                        </li>
-
-                        <li class="flex py-6">
-                            <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                            <img src="@/assets/pizza3.png" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." class="h-full w-full object-cover object-center">
-                            </div>
-
-                            <div class="ml-4 flex flex-1 flex-col">
-                            <div>
-                                <div class="flex justify-between text-base font-medium text-gray-900">
-                                <h3>
-                                    <a href="#"> Salami  </a>
-                                </h3>
-                                <p class="ml-4">$14.50</p>
-                                </div>
-                                <p class="mt-1 text-sm text-gray-500">Medium</p>
-                            </div>
-                            <div class="flex flex-1 items-end justify-between text-sm">
-                                <p class="text-gray-500">Qty 1</p>
-
-                                <div class="flex">
-                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
-                                </div>
-                            </div>
-                            </div>
-                        </li>
                         <!-- More products... -->
                         </ul>
+                        <div class="text-black text-2xl my-2" v-else>
+                            <h1>There is nothing in here...</h1>
+                            <img src="@/assets/cart.svg" alt="">
+                        </div>
                     </div>
                     </div>
                 </div>
@@ -128,7 +83,7 @@ v-bind:class="[showCart ? 'translate-x-0' : 'translate-x-full']"
                 <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
                     <div class="flex justify-between text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p>$262.00</p>
+                    <p>${{cartItemsPrice}}</p>
                     </div>
                     <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                     <div class="mt-6">
@@ -143,7 +98,6 @@ v-bind:class="[showCart ? 'translate-x-0' : 'translate-x-full']"
                 </div>
             </div>
             </div>
-
         </div>
         </div>
 </Transition>
@@ -157,16 +111,39 @@ import store from '@/store/index.js';
     export default {
         data() {
             return {
+                imgLink : "https://foodpenguinimages.s3.amazonaws.com/uploads",
             }
+        },
+        beforeMount(){
         },
         methods: {
             hideCart(){
                 store.state.showCart = false;
+            },
+            removeItem(id){
+                console.log(id);
+                let items = JSON.parse(localStorage.getItem('cart'));
+                items.splice(items,1);
+                localStorage.removeItem('cart');
+                localStorage.setItem('cart',JSON.stringify(items));
+                store.state.cartItems = items;
+                
             }
+
         },
         computed:{
             showCart(){
                 return store.state.showCart
+            },
+            cartItems(){
+                return store.state.cartItems
+            },
+            cartItemsPrice(){
+                if(this.cartItems.length>0){
+                return store.state.cartItems.map(o => o.price).reduce((a, c) => { return +a + +c });
+                }else{
+                    return 0;
+                }
             }
         }
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="nav flex items-center justify-between sm:justify-around px-4 sm:px-0 border-b border-gray-500 border-dashed">
+    <div class="nav flex items-center justify-between sm:justify-around px-4 sm:px-0 border-b border-gray-600 bg-gray-900 ">
         <router-link to="/">
         <img src="@/assets/logo_white.png" alt="">
         </router-link>
@@ -8,8 +8,11 @@
         <router-link class="text-white font-light link" :to="{name:'Menu'}">Menu</router-link> 
         <router-link class="text-white font-light link" :to="{name:'Contact'}">Contact</router-link> 
         </div>
-        <div @click="showCartMethod" class="h-8 w-8 flex items-center justify-center rounded-full cursor-pointer hover:bg-orange-strong bg-orange hidden sm:flex">
+        <div @click="showCartMethod" class="h-10 w-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-orange-strong bg-orange relative hidden sm:flex">
             <img class="h-4 w-4" src="@/assets/cart-shopping-solid.svg" alt="">
+            <div class="absolute w-6 h-6 bg-white text-black rounded-full font-bold top-6 border-orange-strong border flex items-center justify-center right-7">
+                {{ cartItemsCount }}
+            </div>
         </div>
         <div @click="showMobileNavMethod" class="h-8 w-8 flex items-center justify-center rounded-full cursor-pointer  flex sm:hidden">
             <img src="@/assets/bars.png" alt="">
@@ -22,6 +25,7 @@ import store from '@/store/index.js';
     export default {
         methods: {
          showCartMethod(){
+             store.dispatch("getCartItems");
              console.log("OK");
             store.state.showCart = true;
         },
@@ -32,6 +36,9 @@ import store from '@/store/index.js';
         computed:{
             test(){
                 return store.state.showMobileNav;
+            },
+            cartItemsCount(){
+                return store.state.cartItems.length;
             }
         }
 
@@ -41,7 +48,6 @@ import store from '@/store/index.js';
 <style  scoped>
 
 .nav{
-    background: rgba(0, 0, 0, ,.7);
     z-index:10;
 }
 .link{

@@ -1,8 +1,8 @@
 <template>
-    <div class="h-full bg-gray-900 pt-24">
-        <div class="w-full md:w-11/12 flex flex-col items-center justify-center mx-auto border border-white">
-            <div class="w-full top-img h-full lg:h-52">
-                <div class="content h-full flex items-center justify-center ">
+    <div class="h-full bg-gray-900 pt-4 pb-4">
+        <div class="w-full md:w-11/12 flex flex-col items-center justify-center mx-auto border border-white rounded-md">
+            <div class="w-full top-img h-full lg:h-52 rounded-md">
+                <div class="content h-full flex items-center justify-center rounded-md">
                     <div class="flex items-center flex-col lg:flex-row  justify-center lg:space-x-8 space-y-8 p-4">
                         <div class="">
                             <h2 class="font-bold">Get in touch</h2>

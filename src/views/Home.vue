@@ -86,9 +86,10 @@
           </h1>
 
           <p class="mt-3 text-base text-gray-200 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
-          <vueper-slides  autoplay arrows-outside bullets-outside>
-            <vueper-slide class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start flex-col bg-gray-800 p-12 rounded-md" v-for="(slide, i) in slides" :key="i" :title="slide.title" :content="slide.content" />
+          <vueper-slides fixed-height="300px"  autoplay arrows-outside bullets-outside>
+            <vueper-slide  class="mt-5  sm:mt-8 sm:flex sm:justify-center lg:justify-start flex-col bg-gray-800 p-12 rounded-md" v-for="(slide, i) in slides" :key="i" :title="slide.title" :content="slide.content" />
           </vueper-slides>
+
         </div>
       </main>
     </div>
