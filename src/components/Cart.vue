@@ -87,7 +87,7 @@ v-bind:class="[showCart ? 'translate-x-0' : 'translate-x-full']"
                     </div>
                     <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                     <div class="mt-6">
-                    <a href="#" class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong">Checkout</a>
+                    <router-link class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong" to="Checkout">Checkout</router-link> 
                     </div>
                     <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
                     <p>

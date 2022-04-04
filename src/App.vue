@@ -3,7 +3,7 @@
   <MobileNav class="mobile-nav sm:hidden"/>
   <Cart/>
   <router-view/>
-  <Alert>SIEMAN</Alert>
+  <!-- <Alert>SIEMAN</Alert> -->
   <Footer/>
 </template>
 <script>
@@ -11,14 +11,14 @@ import Nav from '@/components/Nav.vue';
 import Cart from '@/components/Cart.vue';
 import MobileNav from '@/components/MobileNav.vue';
 import Footer from '@/components/Footer.vue';
-import Alert from '@/components/Alert.vue';
+// import Alert from '@/components/Alert.vue';
 export default {
   components:{
     Nav,
     Cart,
     MobileNav,
     Footer,
-    Alert
+    // Alert
   }
 }
 </script>

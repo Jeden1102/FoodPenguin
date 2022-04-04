@@ -15,7 +15,11 @@ export default createStore({
     },
     actions:{
         getCartItems({commit}){
-            const cartItems = JSON.parse(localStorage.getItem("cart"));
+            let cartItems = JSON.parse(localStorage.getItem("cart"));
+            if(!cartItems){
+                localStorage.setItem('cart',JSON.stringify([]));
+            }
+            cartItems = JSON.parse(localStorage.getItem("cart"));
             commit("GET_CART_ITEMS",cartItems);
         }
     }
