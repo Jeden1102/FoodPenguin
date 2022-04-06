@@ -6,10 +6,11 @@
         <p class="font-light">Craving some delicious Greek food? Maybe you’re in the mood for a juicy steak? No matter what kind of meal you have in mind, The Spot Restaurant is ready to prepare it for you.</p>
         <a href="#" class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong">Explore menu</a>
       </div>
-    <img src="@/assets/chevron-down-solid.svg" class="down"  alt="">
+      <a href="#features"><img src="@/assets/chevron-down-solid.svg" class="down"  alt=""></a>
+    
     </div>
     <div class="why_us border-t-2 border-b-2 border-dashed border-gray-400 h-full py-8 flex items-center justify-center flex-col bg-gray-900">
-      <h2 class="text-3xl font-bold">Features</h2>
+      <h2 id="features" class="text-3xl font-bold">Features</h2>
       <h3 class="text-2xl">Why Food<span class="text-orange">Penguin</span>  ?</h3>
       <div class="boxes mt-4 flex flex-wrap items-center justify-center ">
         <div class="box m-2 p-8 bg-gray-600 rounded-lg h-96 w-64 flex items-center justify-center space-y-4 flex-col">
@@ -39,24 +40,24 @@
       <div class="flex flex-col h-full p-12">
         <div class="w-full  h-full ">
           <div class="flex items-center justify-center flex-wrap">
-            <div class="box m-2 p-4 h-56 w-44 flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
+            <router-link  :to="{name:'Menu', params:{target:'Drinks'}}" class="box m-2 p-4 h-56 w-44 flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
               <h2 class="w-full font-bold text-2xl">Drinks</h2>
               <img src="@/assets/categories_icons/napoje.png" alt="">
-            </div>
-            <div class="box m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
+            </router-link>
+            <router-link :to="{name:'Menu', params:{target:'Pizza'}}"  class="box m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
               <h2 class="w-full font-bold text-2xl">Pizza</h2>
               <img src="@/assets/categories_icons/pizza.png" alt="">
-            </div>
-            <div class="box m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
+            </router-link>
+            <router-link :to="{name:'Menu', params:{target:'Taco'}}"  class="box m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
               <h2 class="w-full font-bold text-2xl">Taco</h2>
               <img src="@/assets/categories_icons/taco.png" alt="">
-            </div>
-            <div class="box  m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
+            </router-link>
+            <router-link :to="{name:'Menu', params:{target:'Burger'}}"  class="box  m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
               <h2 class="w-full font-bold text-2xl">Burgers</h2>
               <img src="@/assets/categories_icons/burgery.png" alt="">
-            </div>
+            </router-link>
           </div>
-                  <a href="#" class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong">Full menu</a>
+                  <router-link class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong" :to="{name:'Menu'}">Full Menu</router-link> 
         </div>
       </div>
     </div>
