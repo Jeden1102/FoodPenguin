@@ -119,7 +119,7 @@ export default {
   },
   methods: {
     getData(){
-      axios.get("http://localhost/zlecenia/skiba3/food_penguin_client/project/api/getData.php").then(data=>{
+      axios.get("https://resturant-api-xx.herokuapp.com/api/getData.php").then(data=>{
         console.log(data);
       })
     }

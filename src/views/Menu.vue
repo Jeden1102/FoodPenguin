@@ -69,11 +69,11 @@ if(this.params){
         },100)
       },
       getData(){
-        axios.get("http://localhost:8000/api/categories").then(res=>{
+        axios.get("https://resturant-api-xx.herokuapp.com/api/categories").then(res=>{
           this.categories = res.data;
           this.firstLink();
         })
-        axios.get("http://localhost:8000/api/productsGrupped").then(res=>{
+        axios.get("https://resturant-api-xx.herokuapp.com/api/productsGrupped").then(res=>{
           this.products = res.data;
           console.log(res.data);
         })

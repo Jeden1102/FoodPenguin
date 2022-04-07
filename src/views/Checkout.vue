@@ -2,7 +2,11 @@
     <div class="min-h-screen bg-gray-900 p-4">
         <Loading v-if="sendingOrder">Order is being set....</Loading>
         <div class="w-full sm:w-10/12 mx-auto bg-white text-black flex flex-col lg:flex-row  rounded-lg p-4">
-            <div class="w-full lg:w-1/2 flex items-center justify-start flex-col">
+            <div class="w-full lg:w-1/2 flex items-center justify-start flex-col" v-if="orderSubmitted">
+                        <h1 class="text-2xl my-4">Hurray ! Your order has been submitted, wait for the confirmation e-mail send on <span class="font-bold">{{formData.email}}</span> </h1>
+                    <img src="@/assets/thanks.svg" alt="">
+            </div>
+            <div v-else class="w-full lg:w-1/2 flex items-center justify-start flex-col">
                 <h2 class="text-4xl font-bold my-2 text-orange">Order summary</h2>
                 <p>Ordered products are shown below, check your list and checkout at any moment.</p>
                 <div v-if="cartItems.length>0" class="w-full h-screen overflow-y-scroll">
@@ -120,6 +124,7 @@ Loading,
         data() {
             return {
                 sendingOrder:false,
+                orderSubmitted:false,
                 deliveryOptions:[
                     {name:"North Pine",price:0},
                     {name:"Alamitos Beach",price:0},
@@ -194,8 +199,9 @@ Loading,
                 console.log(res)
             this.sendingOrder = false;
                 localStorage.removeItem('cart');
-                localStorage.setItem('cart',[]);
+                localStorage.setItem('cart',JSON.stringify([]));
                 store.state.cartItems = [];
+                this.orderSubmitted = true;
             }).catch(err=>{
             this.sendingOrder = false;
                 console.log(err.data);
