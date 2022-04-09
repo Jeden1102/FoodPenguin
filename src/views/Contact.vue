@@ -1,5 +1,6 @@
 <template>
     <div class="h-full bg-gray-900 pt-4 pb-4">
+        <Loading v-if="sendingForm">Your form is being send</Loading>
         <div class="w-full md:w-11/12 flex flex-col items-center justify-center mx-auto border border-white rounded-md">
             <div class="w-full top-img h-full lg:h-52 rounded-md">
                 <div class="content h-full flex items-center justify-center rounded-md">
@@ -46,17 +47,28 @@
                     </p>
                 </div>
                 <div class="w-full md:w-1/2 flex items-center justify-center flex-col space-y-2">
+                <form @submit.prevent="sendForm" action="">
                     <label for="first-name" class="block text-gray-900 text-left w-full">Name</label>
-                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="John Doe">
+                    <input v-model="name" type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="John Doe">
                     <label for="first-name" class="block text-gray-900 text-left w-full">Email</label>
-                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="JohnDoe@gmail.com">
+                    <input v-model="email" type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="JohnDoe@gmail.com">
                     <label for="first-name" class="block text-gray-900 text-left w-full">Phone number</label>
-                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="512 123 989">
+                    <input v-model="phone" type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="512 123 989">
                     <label for="about" class="block text-left w-full text-gray-900"> Message </label>
                     <div class="mt-1 w-full">
-                        <textarea id="about" name="about"  class="shadow-sm h-28  focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="I'd like to ask about organising..."></textarea>
+                        <textarea v-model="content" id="about" name="about"  class="shadow-sm h-28  focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="I'd like to ask about organising..."></textarea>
                     </div>
-                            <a href="#" class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 hover:bg-orange-strong">Send</a>
+                            <button type="submit" class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 hover:bg-orange-strong">Send</button>
+                </form>
+                <div v-if="errors.length>0" class="alert alert-danger mt-2 p-6" role="alert">
+                    <h2>There were some erors while sending form :</h2>
+                    <ul class="list-disc">
+                        <li v-for="error in errors" :key="error">{{error}}</li>
+                    </ul>
+                </div>
+                <div v-if="formSubmitted" class="alert alert-success mt-2 p-6" role="alert">
+                    <h2>Form has been submitted succefully!</h2>
+                </div>
                 </div>
 
             </div>
@@ -65,8 +77,58 @@
 </template>
 
 <script>
+import axios from 'axios';
+import Loading from '@/components/Loading.vue';
     export default {
-        
+        components:{
+            Loading,
+        },
+        data() {
+            return {
+                name:null,
+                email:null,
+                phone:null,
+                content:null,
+                sendingForm:false,
+                formSubmitted:false,
+                errors:[],
+            }
+        },
+        methods: {
+            sendForm(){
+                this.errors = [];
+                if(this.name == null){
+                    this.errors.push("Name field cannot be blank");
+                }
+                if(this.email == null){
+                    this.errors.push("Email field cannot be blank");
+                }
+                if(this.phone == null){
+                    this.errors.push("Phone field cannot be blank");
+                }
+                if(this.content == null){
+                    this.errors.push("Content field cannot be blank");
+                }
+                if(this.errors.length>0){
+                    return;
+                }
+                this.sendingForm = true;
+            axios.post('https://resturant-api-xx.herokuapp.com/api/contact',{
+                name:this.name,
+                email:this.email,
+                phone:this.phone,
+                content:this.content,
+            }).then(res=>{
+                console.log(res)
+                this.sendingForm = false;
+                this.formSubmitted = true;
+            }).catch(err=>{
+                console.log(err.data);
+                this.sendingForm = false;
+                this.formSubmitted = true;
+            })
+            }
+        },
     }
 </script>
 

@@ -4,7 +4,7 @@
         <div class="w-full sm:w-10/12 mx-auto bg-white text-black flex flex-col lg:flex-row  rounded-lg p-4">
             <div class="w-full lg:w-1/2 flex items-center justify-start flex-col" v-if="orderSubmitted">
                         <h1 class="text-2xl my-4">Hurray ! Your order has been submitted, wait for the confirmation e-mail send on <span class="font-bold">{{formData.email}}</span> </h1>
-                    <img src="@/assets/thanks.svg" alt="">
+                    <img class="h-96" src="@/assets/thanks.svg" alt="">
             </div>
             <div v-else class="w-full lg:w-1/2 flex items-center justify-start flex-col">
                 <h2 class="text-4xl font-bold my-2 text-orange">Order summary</h2>
@@ -37,9 +37,9 @@
                 <label for="first-name" class="block ">Name</label>
                 <input v-model="formData.name" type="text" placeholder="John Doe" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 <label for="first-name" class="block ">E-mail</label>
-                <input v-model="formData.email" type="email" placeholder="JohnDoe@gmai.com" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input v-model="formData.email" type="email" placeholder="JohnDoe@gmai.com" name="first-name" id="first-name" autocomplete="given-email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 <label for="first-name" class="block ">Phone number</label>
-                <input  v-model="formData.phone" type="text" placeholder="123 456 789" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input  v-model="formData.phone" type="text" placeholder="123 456 789" name="first-name" id="first-name" autocomplete="given-phone" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 <label for="country" class="block text-sm font-medium text-gray-700">City</label>
                 {{ deliveryCity }}
                 <select v-model="delivery" id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ">
@@ -48,11 +48,11 @@
                 <div class="flex justify-center items-center space-x-4">
                     <div class="w-1/2">
                         <label for="first-name" class="block ">Street</label>
-                        <input  v-model="formData.street" type="text" placeholder="Opolska" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input  v-model="formData.street" type="text" placeholder="Opolska" name="first-name" id="first-name" autocomplete="given-street" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="w-1/2">
                         <label for="first-name" class="block ">Number</label>
-                        <input  v-model="formData.number" type="text" placeholder="12/4" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input  v-model="formData.number" type="text" placeholder="12/4" name="first-name" id="first-name" autocomplete="given-number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                 </div>
             <div>
@@ -64,7 +64,7 @@
             <div>
               <label for="about" class="block text-sm font-medium text-gray-700"> Date </label>
               <div class="mt-1">
-                <input  v-model="formData.date" class="border border-gray-600" type="date" name="" id="">
+                <input :min="new Date().toISOString().split('T')[0]"  v-model="formData.date" class="border border-gray-600" type="date" name="" id="">
               </div>
             </div>
             <div>
@@ -106,6 +106,15 @@
                         </div>
                     </div>
                 <button type="submit" class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8  hover:bg-orange-strong" >Checkout</button> 
+                <div v-if="errors.length>0" class="alert alert-danger mt-2 p-6" role="alert">
+                    <h2>There were some erors while sending form :</h2>
+                    <ul class="list-disc">
+                        <li v-for="error in errors" :key="error">{{error}}</li>
+                    </ul>
+                </div>
+                <div v-if="orderSubmitted" class="alert alert-success mt-2 p-6" role="alert">
+                    <h2>Order has been submitted succefully!</h2>
+                </div>
                 </div>
   </form>
             </div>
@@ -125,6 +134,7 @@ Loading,
             return {
                 sendingOrder:false,
                 orderSubmitted:false,
+                errors:[],
                 deliveryOptions:[
                     {name:"North Pine",price:0},
                     {name:"Alamitos Beach",price:0},
@@ -161,7 +171,11 @@ Loading,
                 }
             },
             sumPrice(){
-                return this.cartItemsPrice + this.deliveryPrice;
+                if(this.deliveryPrice==null){
+                    return this.cartItemsPrice;
+                }else{
+                return +this.cartItemsPrice + +this.deliveryPrice;
+                }
             },
             deliveryPrice(){
                 if(this.delivery != null){
@@ -179,10 +193,30 @@ Loading,
             }
         },
         methods: {
+            validate(){
+                this.errors = [];
+                for (const [key] of Object.entries(this.formData)) {
+                    if(this.formData[key] == null && key!='city' &&  key!='sumPrice' && key!='deliveryPrice' && key!='items' && key!='extra'){
+                        this.errors.push(`${key.toUpperCase()} field must be set`);
+                    }
+                }
+                if(this.cartItems.length==0){
+                    this.errors.push("Cart is empty");
+                }
+                if(this.deliveryCity == null){
+                    this.errors.push("Delivery city field cannot be blank");
+                }
+                console.log(this.errors);               
+            },
         setOrder(){
             this.sendingOrder = true;
+            this.validate();
+            if(this.errors.length>0){
+                this.sendingOrder = false;
+                return;
+            }
             console.log("ok")
-            axios.post('http://localhost:8000/api/ordersDelivery',{
+            axios.post('https://resturant-api-xx.herokuapp.com/api/ordersDelivery',{
                     name:this.formData.name,
                     email:this.formData.email,
                     phone:this.formData.phone,
