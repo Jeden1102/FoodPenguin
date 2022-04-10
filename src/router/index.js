@@ -39,12 +39,9 @@ const routes = [
 ]
 
 const router = createRouter({
-  mode: "hash",
-  base: process.env.BASE_URL,
+  history: createWebHistory(process.env.BASE_URL),
   routes,
+  mode: 'hash'
 })
-router.beforeEach((to,from,next)=>{
-  document.title = `${to.meta.title} | Food Penguin`;
-  return next();
-})
+
 export default router
