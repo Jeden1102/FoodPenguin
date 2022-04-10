@@ -7,41 +7,28 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
-    meta:{
-      title:"Restaurant",
-    }
+    component: Home
   },
   {
     path: '/Contact',
     name: 'Contact',
-    component: Contact,
-    meta:{
-      title:"Contact",
-    }
+    component: Contact
   },
   {
     path: '/Menu',
     name: 'Menu',
-    component: Menu,
-    meta:{
-      title:"Menu",
-    }
+    component: Menu
   },
   {
     path: '/Checkout',
     name: 'Checkout',
-    component: Checkout,
-    meta:{
-      title:"Checkout",
-    }
+    component: Checkout
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
-  mode: 'hash'
+  routes
 })
 
 export default router
