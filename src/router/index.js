@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory  } from 'vue-router'
 import Home from '../views/Home.vue'
 import Contact from '../views/Contact.vue';
 import Menu from '../views/Menu.vue';
@@ -7,28 +7,44 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta:{
+      title:"Restaurant",
+    }
   },
   {
     path: '/Contact',
     name: 'Contact',
-    component: Contact
+    component: Contact,
+    meta:{
+      title:"Contact",
+    }
   },
   {
     path: '/Menu',
     name: 'Menu',
-    component: Menu
+    component: Menu,
+    meta:{
+      title:"Menu",
+    }
   },
   {
     path: '/Checkout',
     name: 'Checkout',
-    component: Checkout
+    component: Checkout,
+    meta:{
+      title:"Checkout",
+    }
   },
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+  history: createWebHashHistory(),
+  routes,
+  mode:"hash"
 })
-
+router.beforeEach((to,from,next)=>{
+  document.title = `${to.meta.title} | Food Penguin`;
+  return next();
+})
 export default router
