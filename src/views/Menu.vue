@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-screen py-4 bg-gray-900 ">
+  <div class=" py-4 bg-gray-900 relative">
+      <Loading v-if="loadingData">Menu is being loaded...</Loading>
     <h1 class="text-white">{{params}}</h1>
   <Alert v-if="showAlert">Product has been added</Alert>
 
@@ -34,9 +35,11 @@
 import axios from 'axios'
 import store from '@/store/index.js';
 import Alert from '@/components/Alert.vue';
+import Loading from '@/components/Loading.vue';
   export default {
     components:{
       Alert,
+      Loading
     },
     data() {
       return {
@@ -46,6 +49,7 @@ import Alert from '@/components/Alert.vue';
         addons:["beef","cheese","chicken","paprika","tomato"],
         showAlert:false,
         params:null,
+        loadingData:false,
       }
     },
     mounted() {
@@ -69,9 +73,11 @@ if(this.params){
         },100)
       },
       getData(){
+        this.loadingData=true;
         axios.get("https://resturant-api-xx.herokuapp.com/api/categories").then(res=>{
           this.categories = res.data;
           this.firstLink();
+        this.loadingData=false;
         })
         axios.get("https://resturant-api-xx.herokuapp.com/api/productsGrupped").then(res=>{
           this.products = res.data;

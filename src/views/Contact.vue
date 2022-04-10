@@ -46,8 +46,8 @@
                     <a href="mailto:bum123@o2.pl" class="text-orange font-bold">foodpenguin@contact.com</a>
                     </p>
                 </div>
-                <div class="w-full md:w-1/2 flex items-center justify-center flex-col space-y-2">
-                <form @submit.prevent="sendForm" action="">
+                <div class="w-full md:w-1/2  flex items-center justify-center flex-col space-y-2">
+                <form class="w-full" @submit.prevent="sendForm" action="">
                     <label for="first-name" class="block text-gray-900 text-left w-full">Name</label>
                     <input v-model="name" type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="John Doe">
                     <label for="first-name" class="block text-gray-900 text-left w-full">Email</label>

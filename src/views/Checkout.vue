@@ -39,9 +39,8 @@
                 <label for="first-name" class="block ">E-mail</label>
                 <input v-model="formData.email" type="email" placeholder="JohnDoe@gmai.com" name="first-name" id="first-name" autocomplete="given-email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 <label for="first-name" class="block ">Phone number</label>
-                <input  v-model="formData.phone" type="text" placeholder="123 456 789" name="first-name" id="first-name" autocomplete="given-phone" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input  v-model="formData.phone" type="number" placeholder="123 456 789" name="first-name" id="first-name" autocomplete="given-phone" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 <label for="country" class="block text-sm font-medium text-gray-700">City</label>
-                {{ deliveryCity }}
                 <select v-model="delivery" id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ">
                   <option  v-for="option in deliveryOptions" :value="option"  :key="option">{{option.name}}(+${{option.price}})</option>
                 </select>

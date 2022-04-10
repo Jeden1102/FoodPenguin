@@ -119,6 +119,7 @@ import store from '@/store/index.js';
         methods: {
             hideCart(){
                 store.state.showCart = false;
+                store.state.showMobileNav  = false;
             },
             removeItem(id){
                 console.log(id);
