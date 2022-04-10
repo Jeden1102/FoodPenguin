@@ -39,9 +39,9 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  mode: "hash",
+  base: process.env.BASE_URL,
   routes,
-  mode: 'hash'
 })
 router.beforeEach((to,from,next)=>{
   document.title = `${to.meta.title} | Food Penguin`;
