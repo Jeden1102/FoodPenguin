@@ -1,14 +1,14 @@
 <template>
     <div class="nav flex items-center justify-between sm:justify-around px-4 sm:px-0 border-b border-gray-600 bg-gray-900 ">
         <router-link to="/">
-        <img src="@/assets/logo_white.png" alt="">
+        <img class="h-16 sm:h-20" src="@/assets/logo_white.png" alt="">
         </router-link>
         <div class="flex space-x-12 hidden sm:flex">
         <router-link class="text-white font-light link" to="/">Home</router-link> 
         <router-link class="text-white font-light link" :to="{name:'Menu'}">Menu</router-link> 
         <router-link class="text-white font-light link" :to="{name:'Contact'}">Contact</router-link> 
         </div>
-        <div @click="showCartMethod" class="h-10 w-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-orange-strong bg-orange relative hidden sm:flex">
+        <div @click="showCartMethod" class="h-10 w-10 flex items-center justify-center rounded-full cursor-pointer hover:bg-orange-strong bg-orange relative  flex">
             <img class="h-4 w-4" src="@/assets/cart-shopping-solid.svg" alt="">
             <div class="absolute w-6 h-6 bg-white text-black rounded-full font-bold top-6 border-orange-strong border flex items-center justify-center right-7">
                 {{ cartItemsCount }}
@@ -67,7 +67,5 @@ import store from '@/store/index.js';
     content:'';
     transition:.3s;
 }
-.nav img{
-    width: 150px !important;
-}
+
 </style>

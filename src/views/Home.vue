@@ -210,4 +210,7 @@ export default {
     background-size:cover;
     background-position: bottom;
   }
+  .home{
+    transform: translateY(30px);
+  }
 </style>

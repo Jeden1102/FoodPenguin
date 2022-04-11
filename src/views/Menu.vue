@@ -2,7 +2,6 @@
   <div class="test py-40 sm:py-24 bg-gray-900 relative">
       <Loading v-if="loadingData">Menu is being loaded...</Loading>
     <h1 class="text-white">{{params}}</h1>
-  <Alert v-if="showAlert">Product has been added</Alert>
 
 <ul class="nav nav-tabs py-12 flex items-center justify-center space-x-2 border-0 mb-4" id="myTab" role="tablist">
   <li v-for="(category,index) in categories" :key="index" class="nav-item " role="presentation">
@@ -34,11 +33,9 @@
 <script>
 import axios from 'axios'
 import store from '@/store/index.js';
-import Alert from '@/components/Alert.vue';
 import Loading from '@/components/Loading.vue';
   export default {
     components:{
-      Alert,
       Loading
     },
     data() {
@@ -85,9 +82,9 @@ if(this.params){
         })
       },
       addToCart(product){
-        this.showAlert = true;
+        this.$emit('show-alert');
         setTimeout(()=>{
-          this.showAlert=false;
+        this.$emit('show-alert');
         },7000)
         if(localStorage.getItem('cart')){
           let oldItems = JSON.parse(localStorage.getItem('cart'));
@@ -109,7 +106,7 @@ if(this.params){
 
 <style scoped>
 .test{
-  transform: translateY(80px);
+  transform: translateY(50px);
 }
 .active{
   color:black !important;

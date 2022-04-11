@@ -142,6 +142,6 @@ import Loading from '@/components/Loading.vue';
     background-color: rgba(0,0,0,.6)
 }
 .test{
-    transform: translateY(70px);
+    transform: translateY(60px);
 }
 </style>
