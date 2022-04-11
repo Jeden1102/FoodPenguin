@@ -1,5 +1,5 @@
 <template>
-    <div @click="closeAlert" class="alert-box fixed right-4 bottom-4 bg-green-500 text-white  font-bold text-xl p-5 rounded w-1/4 z-50">
+    <div @click="closeAlert" class="alert-box fixed right-4 bottom-4 bg-green-500 text-white  font-bold text-xl p-5 rounded w-3/4  md:w-1/4 z-50">
         <p><slot></slot></p>
     </div>
 </template>

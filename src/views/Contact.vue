@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full bg-gray-900 pt-4 pb-4">
+    <div class="h-full test bg-gray-900 pt-4 pb-24">
         <Loading v-if="sendingForm">Your form is being send</Loading>
         <div class="w-full md:w-11/12 flex flex-col items-center justify-center mx-auto border border-white rounded-md">
             <div class="w-full top-img h-full lg:h-52 rounded-md">
@@ -140,5 +140,8 @@ import Loading from '@/components/Loading.vue';
 }
 .content{
     background-color: rgba(0,0,0,.6)
+}
+.test{
+    transform: translateY(70px);
 }
 </style>

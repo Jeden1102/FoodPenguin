@@ -1,6 +1,6 @@
 <template>
 <Transition name="fade">
-      <div v-if="showMobileNav" class="bg-gray-900 z-50 text-black absolute flex flex-col items-center justify-center">
+      <div v-if="showMobileNav" class="bg-gray-900 z-50 text-black fixed flex flex-col items-center justify-center">
         <img @click="hideMobileNav" class="h-12 w-12 cursor-pointer absolute right-8 top-8 " src="@/assets/close.png" alt="">
         <router-link @click="hideMobileNav" class="absolute left-8 top-4 w-40" to="/">
         <img src="@/assets/logo_white.png" alt="">

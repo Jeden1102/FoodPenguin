@@ -1,10 +1,10 @@
 <template>
-  <div class=" py-4 bg-gray-900 relative">
+  <div class="test py-40 sm:py-24 bg-gray-900 relative">
       <Loading v-if="loadingData">Menu is being loaded...</Loading>
     <h1 class="text-white">{{params}}</h1>
   <Alert v-if="showAlert">Product has been added</Alert>
 
-<ul class="nav nav-tabs flex items-center justify-center space-x-2 border-0 mb-4" id="myTab" role="tablist">
+<ul class="nav nav-tabs py-12 flex items-center justify-center space-x-2 border-0 mb-4" id="myTab" role="tablist">
   <li v-for="(category,index) in categories" :key="index" class="nav-item " role="presentation">
     <button class="nav-link text-white w-full h-full"  :id="`x${category.name}`" data-bs-toggle="tab" :data-bs-target="`#${category.name}`" type="button" role="tab" aria-controls="home" aria-selected="true">{{ category.name }}</button>
   </li>
@@ -108,6 +108,9 @@ if(this.params){
 </script>
 
 <style scoped>
+.test{
+  transform: translateY(80px);
+}
 .active{
   color:black !important;
 }

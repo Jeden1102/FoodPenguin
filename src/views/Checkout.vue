@@ -10,12 +10,13 @@
                 <h2 class="text-4xl font-bold my-2 text-orange">Order summary</h2>
                 <p>Ordered products are shown below, check your list and checkout at any moment.</p>
                 <div v-if="cartItems.length>0" class="w-full h-screen overflow-y-scroll">
-                    <div v-for="(product,index) in cartItems" :key="index" class="box w-full border borde-black flex items-center justify-start space-x-2 p-2 my-1 text-left relative">
+                    <div v-for="(product,index) in cartItems" :key="index" class="box w-full border borde-black flex-col sm:flex-row flex items-center justify-start space-x-2 p-2 my-1 text-left relative">
                         <div @click="removeItem(index)"  class="bg-red-400 hover:bg-red-500 cursor-pointer p-2 rounded-md absolute  right-2 bottom-2">
                         <img src="@/assets/trash.svg" class="h-7 w-7" alt="">
                         </div>
-                        <img class="w-32 sm:w-40" src="@/assets/burger.png" alt="">
-                        <div>
+                        <div class="pr-8 sm:pr-0"><img class="w-32 sm:w-40 " src="@/assets/burger.png" alt=""></div>
+                        
+                        <div class="pr-8 sm:pr-0">
                             <h2 class="text-xl font-bold">{{ product.name }}</h2>
                             <p>{{ product.desc }}</p>
                             <p class="font-bold">${{product.price}}</p>
@@ -30,7 +31,7 @@
                     <img src="@/assets/cart.svg" alt="">
                 </div>
             </div>
-            <div class="w-full lg:w-1/2 flex items-center justify-center flex-col text-left mx-1 card">
+            <div class="w-full lg:w-1/2 flex items-center justify-center flex-col text-left mx-1 ">
                 <h2 class="text-4xl font-bold my-2 text-orange">Payment & delivery</h2>
                 <p>Complete fields shown below to set your order.</p>
                 <form @submit.prevent="setOrder" class="w-11/12 my-2 flex flex-col space-y-2" action="">
@@ -81,7 +82,7 @@
                                 Subtotal
                             </div>
                             <div class="w-1/2 text-center ">
-                                ${{ cartItemsPrice }}
+                                ${{ cartItemsPrice.toFixed(2) }}
                             </div>
                         </div>
                         <div class="flex w-full border-b border-gray-500">
@@ -100,7 +101,7 @@
                                 Total
                             </div>
                             <div class="w-1/2 text-center ">
-                                ${{ sumPrice }}
+                                ${{ sumPrice.toFixed(2) }}
                             </div>
                         </div>
                     </div>

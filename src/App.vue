@@ -2,7 +2,7 @@
   <Nav class="nav"/>
   <MobileNav class="mobile-nav sm:hidden"/>
   <Cart/>
-  <router-view/>
+  <router-view />
   <Footer/>
 </template>
 <script>
@@ -28,11 +28,13 @@ export default {
   color: rgb(212, 212, 212);
 }
 .nav{
-  position:relative;
+  position:fixed;
+  left:0;
+  top:0;
   width:100%;
 }
 .mobile-nav{
-  position:absolute;
+  position:fixed;
   left:0;
   top:0;
   width:100%;

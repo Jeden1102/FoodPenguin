@@ -1,12 +1,12 @@
 <template>
   <div class="home ">
-    <div class="baner flex relative">
+    <div class="baner flex relative pb-20 sm:pb-0">
       <div class="baner_left w-full md:w-1/2  lg:w-3/12 h-full flex items-center justify-center flex-col px-4 ">
         <h2 class="text-4xl my-8"> <span class="font-bold underline">Cuisine {{ showCart }} <span class="text-orange">Food</span>Penguin </span> - The fine art of the modern professional cooking methods</h2>
         <p class="font-light">Craving some delicious Greek food? Maybe you’re in the mood for a juicy steak? No matter what kind of meal you have in mind, The Spot Restaurant is ready to prepare it for you.</p>
-        <a href="#" class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong">Explore menu</a>
+        <a href="#" class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong border-0">Explore menu</a>
       </div>
-      <a href="#features"><img src="@/assets/chevron-down-solid.svg" class="down"  alt=""></a>
+      <a href="#"><img src="@/assets/chevron-down-solid.svg" class="down"  alt=""></a>
     
     </div>
     <div class="why_us border-t-2 border-b-2 border-dashed border-gray-400 h-full py-8 flex items-center justify-center flex-col bg-gray-900">
@@ -40,24 +40,24 @@
       <div class="flex flex-col h-full p-12">
         <div class="w-full  h-full ">
           <div class="flex items-center justify-center flex-wrap">
-            <router-link  :to="{name:'Menu', params:{target:'Drinks'}}" class="box m-2 p-4 h-56 w-44 flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
+            <router-link   :to="{name:'Menu', params:{target:'Drinks'}}" class="hover:text-white box m-2 p-4 h-56 w-44 flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
               <h2 class="w-full font-bold text-2xl">Drinks</h2>
               <img src="@/assets/categories_icons/napoje.png" alt="">
             </router-link>
-            <router-link :to="{name:'Menu', params:{target:'Pizza'}}"  class="box m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
+            <router-link :to="{name:'Menu', params:{target:'Pizza'}}"  class="hover:text-white box m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
               <h2 class="w-full font-bold text-2xl">Pizza</h2>
               <img src="@/assets/categories_icons/pizza.png" alt="">
             </router-link>
-            <router-link :to="{name:'Menu', params:{target:'Taco'}}"  class="box m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
+            <router-link :to="{name:'Menu', params:{target:'Taco'}}"  class=" hover:text-white box m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
               <h2 class="w-full font-bold text-2xl">Taco</h2>
               <img src="@/assets/categories_icons/taco.png" alt="">
             </router-link>
-            <router-link :to="{name:'Menu', params:{target:'Burger'}}"  class="box  m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
+            <router-link :to="{name:'Menu', params:{target:'Burger'}}"  class="hover:text-white box  m-2 p-4 h-56 w-44  flex items-center justify-center bg-gray-700 rounded-md flex-col cursor-pointer hover:bg-gray-800 transition duration-200 hover:border-gray-700 border-gray-500 border-2">
               <h2 class="w-full font-bold text-2xl">Burgers</h2>
               <img src="@/assets/categories_icons/burgery.png" alt="">
             </router-link>
           </div>
-                  <router-link class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong" :to="{name:'Menu'}">Full Menu</router-link> 
+                  <router-link class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong border-0 " :to="{name:'Menu'}">Full Menu</router-link> 
         </div>
       </div>
     </div>
@@ -87,7 +87,7 @@
           </h1>
 
           <p class="mt-3 text-base text-gray-200 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
-          <vueper-slides fixed-height="300px"  autoplay arrows-outside bullets-outside>
+          <vueper-slides :arrows="false"  fixed-height="400px"  autoplay bullets-outside>
             <vueper-slide  class="mt-5  sm:mt-8 sm:flex sm:justify-center lg:justify-start flex-col bg-gray-800 p-12 rounded-md" v-for="(slide, i) in slides" :key="i" :title="slide.title" :content="slide.content" />
           </vueper-slides>
 
@@ -156,15 +156,15 @@ export default {
         `,
       },
       {
-        title: '<h2 class="font-light mt-4">Madzia Radziej, 2022-21-3</h2>',
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur distinctio doloribus neque laudantium omnis soluta impedit dolores officia minus.
+        title: '<h2 class="font-light mt-4">Radzia Madziej, 2022-21-3</h2>',
+        content: `Jedzenie typu tragicznego, jak to się mówi - nie polecam.
         <div class="w-full  flex justify-center my-2">
           <div class="flex space-x-1">
-            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
-            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
-            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
-            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
-            <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+                                    <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+                        <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="">
+                        <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="">
+                        <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="">
+                        <img  class="w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="">
           </div>
         </div>
         `,
@@ -176,6 +176,12 @@ export default {
 }
 </script>
 <style scoped>
+.vueperslides__arrow{
+  display:none !important;
+}
+.vueperslides__arrow--next{
+  display:none !important;
+}
   .baner{
     background:url('../assets/bg-main3.jpg');
     background-size:cover;
@@ -194,6 +200,7 @@ export default {
     padding:5px;
     transition: .3s;
     border-radius: 5px;
+    transform:translate(-50%,0);
   }
   .down:hover{
     background: rgba(255,255,255,.3);
