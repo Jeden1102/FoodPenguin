@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-900 p-4">
+    <div class="min-h-screen test bg-gray-900 p-4">
         <Loading v-if="sendingOrder">Order is being set....</Loading>
         <div class="w-full sm:w-10/12 mx-auto bg-white text-black flex flex-col lg:flex-row  rounded-lg p-4">
             <div class="w-full lg:w-1/2 flex items-center justify-start flex-col" v-if="orderSubmitted">
@@ -254,5 +254,7 @@ Loading,
 </script>
 
 <style scoped>
-
+.test{
+    transform: translateY(60px);
+}
 </style>

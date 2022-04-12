@@ -1,10 +1,10 @@
 <template>
   <div class="home ">
-    <div class="baner flex relative pb-20 sm:pb-0">
+    <div class="baner flex relative pt-20 pb-20 sm:pb-0">
       <div class="baner_left w-full md:w-1/2  lg:w-3/12 h-full flex items-center justify-center flex-col px-4 ">
         <h2 class="text-4xl my-8"> <span class="font-bold underline">Cuisine {{ showCart }} <span class="text-orange">Food</span>Penguin </span> - The fine art of the modern professional cooking methods</h2>
         <p class="font-light">Craving some delicious Greek food? Maybe you’re in the mood for a juicy steak? No matter what kind of meal you have in mind, The Spot Restaurant is ready to prepare it for you.</p>
-        <a href="#" class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong border-0">Explore menu</a>
+        <router-link :to="{name:'Menu'}" class="inline-block text-center bg-orange text-white font-bold mt-4 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-orange-strong border-0">Explore menu</router-link>
       </div>
       <a href="#"><img src="@/assets/chevron-down-solid.svg" class="down"  alt=""></a>
     
