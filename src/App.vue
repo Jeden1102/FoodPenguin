@@ -2,8 +2,8 @@
   <Nav class="nav"/>
   <MobileNav class="mobile-nav sm:hidden"/>
   <Cart class="cart"/>
-  <Alert v-if="showAlert" v-on:show-alert="showAlert = !showAlert" class="fixed left-0 bottom-0 w-1/2 h-72 bg-green-600 z-50 ">Product added to cart</Alert>
-  <router-view />
+  <Alert v-if="showAlert"  class="fixed left-10 bottom-10 w-1/2 h-32 bg-green-600 z-50 flex justify-center items-center">Product added to cart <img class="h-8 w-8" src="@/assets/cart-shopping-solid.svg" alt=""></Alert>
+  <router-view v-on:show-alert="showAlert = !showAlert"/>
   <Footer/>
 </template>
 <script>
