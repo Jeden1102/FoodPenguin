@@ -1,24 +1,26 @@
-# project
+# FoodPenguin
 
-## Project setup
-```
-npm install
-```
+FoodPenguin is a a project build for fake Restaurant named "Food Penguin". It is connected with my API written in Laravel -> https://github.com/Jeden1102/Res-Admin-API. Main goal of this project was to create and web app to allow customers to order products from the restaurant.
 
-### Compiles and hot-reloads for development
-```
+# Technologies used
+
+Vue, axios, tailwind
+
+## Installation
+
+
+
+```bash
+npm run install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Live version
 
-### Lints and fixes files
-```
-npm run lint
-```
+See me live !
+https://dominikraducki.works/FoodPenguin/#/
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
